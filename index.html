@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Drawing App</title>
+    <style>
+        /* General layout styles */
+        body {
+            touch-action: none; /* Prevents scrolling while drawing */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: sans-serif;
+        }
+        
+        /* Style for the container div holding the buttons/inputs */
+        .controls {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #ccc; /* Border around the control container */
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Style for the canvas element */
+        canvas {
+            border: 2px solid black; /* The border you requested for the canvas */
+            background-color: white; /* Essential for the eraser to work correctly */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <!-- Tools and Undo/Redo Buttons -->
+        <button onclick="setPencilMode()">Pencil</button>
+        <button onclick="setEraserMode()">Eraser</button>
+        <button onclick="undo()">Undo</button>
+        <button onclick="redo()">Redo</button>
+        <button onclick="clearCanvas()">Clear All</button>
+
+        <!-- New Download Button -->
+        <button onclick="downloadSignature()">Download Signature</button>
+
+        <!-- Color Picker -->
+        <label for="penColor">Pen Color:</label>
+        <input type="color" id="penColor" value="#000000">
+
+        <!-- Line Width Slider -->
+        <label for="lineWidth">Size:</label>
+        <input type="range" id="lineWidth" min="1" max="30" value="5">
+        <span id="sizeDisplay">5</span>
+    </div>
+    
+    <!-- Canvas element with a larger size -->
+    <canvas id="drawingBoard" width="800" height="500">
+        Your browser does not support the canvas element.
+    </canvas>
+    
+    <!-- Link the JavaScript file -->
+    <script src="canvas-draw.js"></script>
+</body>
+</html>
